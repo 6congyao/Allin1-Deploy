@@ -1,0 +1,3 @@
+!aws application-autoscaling describe-scaling-activities \
+    --service-namespace sagemaker \
+    --resource-id endpoint/$predp/variant/AllTraffic
