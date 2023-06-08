@@ -1,0 +1,211 @@
+{
+    "http_models":  [
+        {
+            "uri": "https://civitai.com/api/download/models/7627",
+            "filename": "2bNierAutomataLora_v2b.safetensors",
+            "name": "Lora"
+        },
+        {
+            "uri": "https://raw.githubusercontent.com/Stability-AI/stablediffusion/main/configs/stable-diffusion/v2-inference-v.yaml",
+            "filename": "v2-1_768-ema-pruned.yaml",
+            "name": "Stable-diffusion"
+        },
+        {
+            "uri": "https://civitai.com/api/download/models/17106",
+            "filename": "sakuraChiyonoO_loconV1.safetensors",
+            "name": "Lora"
+        },
+		{
+            "uri": "https://civitai.com/api/download/models/30163",
+            "filename": "AnythingV5_v5PrtRE.safetensors",
+            "name": "Stable-diffusion"
+        },
+		{
+            "uri": "https://civitai.com/api/download/models/11745",
+            "filename": "chilloutmix_NiPrunedFp32Fix.safetensors",
+            "name": "Stable-diffusion"
+        }
+    ],
+    "huggingface_models":   [
+        {
+            "repo_id": "stabilityai/stable-diffusion-2-1",
+            "filename": "v2-1_768-ema-pruned.ckpt",
+            "name": "Stable-diffusion"
+        },
+		{
+            "repo_id": "SG161222/Realistic_Vision_V2.0",
+            "filename": "Realistic_Vision_V2.0.safetensors",
+            "name": "Stable-diffusion"
+        },
+        {
+            "repo_id": "runwayml/stable-diffusion-v1-5",
+            "filename": "v1-5-pruned.ckpt",
+            "name": "Stable-diffusion"
+        },
+		{
+            "repo_id": "XpucT/Deliberate",
+            "filename": "Deliberate_v2.safetensors",
+            "name": "Stable-diffusion"
+        },
+			{
+            "repo_id": "Lykon/DreamShaper",
+            "filename": "DreamShaper_5_beta2_BakedVae.safetensors",
+            "name": "Stable-diffusion"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11e_sd15_ip2p.pth",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11e_sd15_ip2p.yaml",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11e_sd15_shuffle.pth",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11e_sd15_shuffle.yaml",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11f1e_sd15_tile.pth",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11f1e_sd15_tile.yaml",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11f1p_sd15_depth.pth",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11f1p_sd15_depth.yaml",
+            "name": "ControlNet"
+        },
+        {
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_canny.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_canny.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_inpaint.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_inpaint.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_lineart.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_lineart.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_mlsd.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_mlsd.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_normalbae.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_normalbae.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_openpose.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_openpose.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_scribble.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_scribble.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_seg.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_seg.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_softedge.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15_softedge.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15s2_lineart_anime.pth",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "lllyasviel/ControlNet-v1-1",
+            "filename": "control_v11p_sd15s2_lineart_anime.yaml",
+            "name": "ControlNet"
+        },
+		{
+            "repo_id": "Kanbara/doll-likeness-series",
+            "filename": "koreanDollLikeness_v15.safetensors",
+            "name": "Lora"
+        },
+		{
+            "repo_id": "Kanbara/doll-likeness-series",
+            "filename": "japaneseDollLikeness_v15.safetensors",
+            "name": "Lora"
+        },
+		{
+            "repo_id": "Kanbara/doll-likeness-series",
+            "filename": "taiwanDollLikeness_v20.safetensors",
+            "name": "Lora"
+        }
+    ]
+}
