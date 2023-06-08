@@ -1,0 +1,99 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+    This template deploys Amazon SageMaker Notebook Instance By Author:Felix
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Required SageMaker Parameters
+        Parameters:
+          - NotebookInstanceType
+          - GithubRepo
+          - EBSSize
+Parameters:
+  NotebookInstanceType:
+    AllowedValues:
+      - ml.m5.xlarge
+      - ml.m5.2xlarge
+    ConstraintDescription: Must select a valid notebook instance type.
+    Default: ml.m5.xlarge
+    Description: Select Instance type for the SageMaker Notebook
+    Type: String
+  GithubRepo:
+    Type: String
+    Default: "https://github.com/brilliantwf/Allin1-Deploy.git"
+    Description: Github Repository
+  EBSSize: 
+    Type: Number
+    Default: 200
+    Description: EBS Size Default Size is 200GB
+Resources:
+# NOTEBOOK -----------------------------------------------------
+  NotebookInstance:
+    Type: AWS::SageMaker::NotebookInstance
+    Properties:
+      InstanceType: !Ref 'NotebookInstanceType'
+      RoleArn: !GetAtt ExecutionRole.Arn
+      VolumeSizeInGB: !Ref 'EBSSize'
+      LifecycleConfigName: !GetAtt BasicNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleConfigName
+  BasicNotebookInstanceLifecycleConfig:
+    Type: "AWS::SageMaker::NotebookInstanceLifecycleConfig"
+    Properties:
+      OnStart:
+        - Content:
+            Fn::Base64: !Sub |
+              #!/bin/bash
+              set -e
+              rm -rf /bin/aws
+              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+              unzip awscliv2.zip
+              sudo ./aws/install -i /usr/local/aws -b /bin
+              cd /home/ec2-user/SageMaker
+              wget https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Linux-64bit.tar.gz -O /tmp/s5cmd_2.0.0_Linux-64bit.tar.gz
+              tar -xvf /tmp/s5cmd_2.0.0_Linux-64bit.tar.gz -C /tmp
+              sudo cp /tmp/s5cmd /usr/bin/
+              git clone --recurse-submodules -j8 ${GithubRepo}
+              echo "export s3uri=${S3Bucket}" >> /etc/profile.d/jupyter-env.sh
+              sudo systemctl restart jupyter-server --no-block
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      # Need to define a static BucketName due to a circular dependency with the AWS::SNS::TopicPolicy
+      BucketName: 
+        !Sub 
+          - 'aigc-${AWS::Region}-${RandomGUID}'
+          - { RandomGUID: !Select [0, !Split ["-", !Select [2, !Split ["/", !Ref AWS::StackId ]]]] }
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      AccessControl: BucketOwnerFullControl        
+  ExecutionRole: 
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service: 
+                - "sagemaker.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Path: "/"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess   
+# END NOTEBOOK -------------------------------------------------
+
+Outputs:
+  Repo:
+    Value: !Sub ${GithubRepo}
+  S3Bucket:
+    Value: !Ref S3Bucket
+    Description: S3 Bucket for object storage
+  NotebookInstanceLab:
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/sagemaker/home?region=${AWS::Region}#/notebook-instances/openNotebook/${NotebookInstance.NotebookInstanceName}?view=lab"
+    Description: Notebook Instance Lab
